@@ -2,7 +2,57 @@
 
 This project demonstrates how to use **Support Vector Machines (SVM)** for both **linear** and **non-linear** binary classification using Scikit-learn in Google Colab.
 
----
+---"""
+# 🌸 Iris Dataset Analysis with Seaborn
+
+This script demonstrates how to load and visualize the Iris dataset using Seaborn.
+
+## 📊 Dataset
+- 150 iris flower samples
+- 4 features: sepal_length, sepal_width, petal_length, petal_width
+- 3 species: setosa, versicolor, virginica
+
+## 🖼️ Visualizations
+- Pairplot (colored by species)
+- Heatmap (correlation)
+- Boxplots for each feature
+
+## 📚 Requirements
+Install dependencies using:
+pip install seaborn pandas matplotlib
+"""
+
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load Iris dataset from seaborn
+df = sns.load_dataset("iris")
+print("📥 First 5 rows of the Iris dataset:")
+print(df.head())
+
+# Plot: Pairplot to visualize all feature relationships
+sns.pairplot(df, hue="species")
+plt.suptitle("Pairplot of Iris Dataset", y=1.02)
+plt.tight_layout()
+plt.show()
+
+# Plot: Correlation heatmap
+plt.figure(figsize=(6, 4))
+sns.heatmap(df.drop("species", axis=1).corr(), annot=True, cmap="Blues", fmt=".2f")
+plt.title("Correlation Heatmap")
+plt.tight_layout()
+plt.show()
+
+# Plot: Boxplot of petal lengths across species
+plt.figure(figsize=(6, 4))
+sns.boxplot(x="species", y="petal_length", data=df)
+plt.title("Petal Length Distribution by Species")
+plt.tight_layout()
+plt.show()
+
+print("✅ Iris data analysis complete!")
+
 
 ## 📌 Objective
 
